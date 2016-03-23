@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css"
+    link rel="stylesheet" type="text/css" href="/stylesheet/index.css"
+    script src="https://code.jquery.com/jquery-2.1.4.min.js"
+    title Ukabete
+    
+  body
+    header.header
+      div.container
+        div.header-left
+          h1.title.brand
+            a.header-item href="/" Ukabete
+    main.container
+      == yield

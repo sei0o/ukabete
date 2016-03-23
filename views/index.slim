@@ -1,0 +1,25 @@
+form action="/" method="POST" enctype="multipart/form-data"
+  div.control
+    label.label
+      | メッセージ(任意)
+      textarea.textarea name="message" placeholder="Wi-Fiのパスワードは、********"
+  
+  div.control
+    label.label
+      | 画像URL(表示できるなら何でも)
+      input.input type="url" name="url" placeholder="http://"
+  
+  div.control
+    label.label
+      | 画像ファイル(URLとファイル両方送信した場合はファイルが優先されます)
+      input type="file" name="file"
+  
+  div.control
+    label.label
+      | 閾値
+      div.is-grouped
+        input.input.is-inline type="number" name="threshold" value="5000"
+        | lux
+  
+  div.control
+    input.button.is-primary.is-medium type="submit" value="作成"

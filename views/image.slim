@@ -1,0 +1,20 @@
+div#description.is-text-centered
+  | 照らし・・て・・浮かべ・・・て・・・・
+  br
+  | ライトで照らすと浮かびます
+  br
+  span#light 測定中...
+
+div#light-area.is-text-centered
+  div#message = @post.message
+  - if @post.url 
+    img#image src="#{@post.url}"
+  - else
+    img#image src="data:image/png;base64,#{@post.base64}"
+
+javascript:
+  window.addEventListener("devicelight", function(event){ // 発火まで時間がかかる
+    $("#light").html(event.value.toString() + "lux")
+
+    $("#light-area").css("opacity", event.value / #{@post.threshold}.0) // 明るい(閾値に近い)ほど濃い表示
+  })

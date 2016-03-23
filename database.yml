@@ -1,0 +1,7 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: ukabete
+  username: <%= ENV["UKABETE_DB_USERNAME"] %>
+  password: <%= ENV["UKABETE_DB_PASSWORD"] %>
+  host: localhost
