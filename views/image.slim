@@ -1,8 +1,14 @@
 div#description.is-text-centered
-  | 照らし・・て・・浮かべ・・・て・・・・
-  br
-  | (カメラとかを)ライトで照らすと浮かびます
-  br
+  | 照らし・・て・・浮かべ・・・て・・・・ <br>
+  | (カメラとかを)ライトで照らすと浮かびます <br>
+  div.column.is-6.is-offset-3
+    div.control.is-grouped
+      input.input#share-url type="text" readonly="readonly"
+      button.button.is-info#copy-url data-clipboard-target="#share-url" コピー 
+    div.control
+      a.twitter-share-button href="https://twitter.com/share" data-text="浮かべ・・て・・・" data-size="large" data-hashtags="ukabete" Tweet
+      javascript:
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   span#light 測定中...
 
 div#light-area.is-text-centered
@@ -12,7 +18,11 @@ div#light-area.is-text-centered
   - else
     img#image src="data:image/png;base64,#{@post.base64}"
 
+script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.8/clipboard.min.js"
+
 javascript:
+  $("#share-url").val(location.href)
+    
   if ("ondevicelight" in window) {
     window.addEventListener("devicelight", function(event){ // 発火まで時間がかかる
       $("#light").html(event.value.toString() + "lux")
@@ -22,3 +32,10 @@ javascript:
   } else {
     alert("端末で照度を測定できません。")
   }
+  
+  // see: http://qiita.com/inouet/items/26b93c5f5f4b65c05e00
+  var clipboard = new Clipboard('#copy-url')
+  clipboard.on("success", function(e){
+    e.clearSelection()
+  })
+ 
