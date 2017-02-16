@@ -5,3 +5,4 @@ development:
   username: <%= ENV["UKABETE_DB_USERNAME"] %>
   password: <%= ENV["UKABETE_DB_PASSWORD"] %>
   host: localhost
+  reconnect: true
